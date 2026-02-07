@@ -1,0 +1,272 @@
+Query,Time-In-MilliSeconds
+insert into `cache` (`expiration`, `key`, `value`) values ('2084352274', 'laravel_cache_table-info-route_names', 'a:1:{s:7:"columns";a:4:{s:2:"id";a:6:{s:5:"Field";s:2:"id";s:4:"Type";s:19:"bigint(20) unsigned";s:4:"Null";s:2:"NO";s:3:"Key";s:3:"PRI";s:7:"Default";N;s:5:"Extra";s:14:"auto_increment";}s:4:"name";a:6:{s:5:"Field";s:4:"name";s:4:"Type";s:12:"varchar(255)";s:4:"Null";s:2:"NO";s:3:"Key";s:3:"UNI";s:7:"Default";N;s:5:"Extra";s:0:"";}s:10:"created_at";a:6:{s:5:"Field";s:10:"created_at";s:4:"Type";s:9:"timestamp";s:4:"Null";s:3:"YES";s:3:"Key";s:0:"";s:7:"Default";N;s:5:"Extra";s:0:"";}s:10:"updated_at";a:6:{s:5:"Field";s:10:"updated_at";s:4:"Type";s:9:"timestamp";s:4:"Null";s:3:"YES";s:3:"Key";s:0:"";s:7:"Default";N;s:5:"Extra";s:0:"";}}}') on duplicate key update `expiration` = values(`expiration`), `key` = values(`key`), `value` = values(`value`), 2.4
+insert into `route_names` (`name`, `updated_at`, `created_at`) values ('auto-increaments.create', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 1.61
+insert into `route_names` (`name`, `updated_at`, `created_at`) values ('auto-increaments.destroy', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 1.49
+insert into `route_names` (`name`, `updated_at`, `created_at`) values ('auto-increaments.edit', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 1.13
+insert into `route_names` (`name`, `updated_at`, `created_at`) values ('auto-increaments.index', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 1.1
+insert into `route_names` (`name`, `updated_at`, `created_at`) values ('auto-increaments.show', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 1.36
+insert into `route_names` (`name`, `updated_at`, `created_at`) values ('auto-increaments.store', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 1.22
+insert into `route_names` (`name`, `updated_at`, `created_at`) values ('auto-increaments.update', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 1.11
+insert into `route_names` (`name`, `updated_at`, `created_at`) values ('brand.activate', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 1.65
+insert into `route_names` (`name`, `updated_at`, `created_at`) values ('brand.ajax_get', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 1.17
+insert into `route_names` (`name`, `updated_at`, `created_at`) values ('brand.create', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 1.12
+insert into `route_names` (`name`, `updated_at`, `created_at`) values ('brand.csv', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 1.18
+insert into `route_names` (`name`, `updated_at`, `created_at`) values ('brand.de_activate', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 1.2
+insert into `route_names` (`name`, `updated_at`, `created_at`) values ('brand.destroy', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 1.58
+insert into `route_names` (`name`, `updated_at`, `created_at`) values ('brand.edit', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 1.15
+insert into `route_names` (`name`, `updated_at`, `created_at`) values ('brand.index', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 2.35
+insert into `route_names` (`name`, `updated_at`, `created_at`) values ('brand.show', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 1.53
+insert into `route_names` (`name`, `updated_at`, `created_at`) values ('brand.store', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 2
+insert into `route_names` (`name`, `updated_at`, `created_at`) values ('brand.update', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 1.36
+insert into `route_names` (`name`, `updated_at`, `created_at`) values ('cities.ajax_get', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 1.2
+insert into `route_names` (`name`, `updated_at`, `created_at`) values ('cities.ajax_get_list', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 1.13
+insert into `route_names` (`name`, `updated_at`, `created_at`) values ('cities.create', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 1.5
+insert into `route_names` (`name`, `updated_at`, `created_at`) values ('cities.destroy', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 1.15
+insert into `route_names` (`name`, `updated_at`, `created_at`) values ('cities.edit', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 1.12
+insert into `route_names` (`name`, `updated_at`, `created_at`) values ('cities.index', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 0.86
+insert into `route_names` (`name`, `updated_at`, `created_at`) values ('cities.options', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 1.11
+insert into `route_names` (`name`, `updated_at`, `created_at`) values ('cities.store', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 1.11
+insert into `route_names` (`name`, `updated_at`, `created_at`) values ('cities.update', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 1.11
+insert into `route_names` (`name`, `updated_at`, `created_at`) values ('companies.index', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 1.08
+insert into `route_names` (`name`, `updated_at`, `created_at`) values ('companies.update', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 0.84
+insert into `route_names` (`name`, `updated_at`, `created_at`) values ('complaint.ajax_get', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 1.16
+insert into `route_names` (`name`, `updated_at`, `created_at`) values ('complaint.create', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 1.23
+insert into `route_names` (`name`, `updated_at`, `created_at`) values ('complaint.destroy', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 1.11
+insert into `route_names` (`name`, `updated_at`, `created_at`) values ('complaint.edit', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 1.09
+insert into `route_names` (`name`, `updated_at`, `created_at`) values ('complaint.index', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 1.14
+insert into `route_names` (`name`, `updated_at`, `created_at`) values ('complaint.show', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 1.07
+insert into `route_names` (`name`, `updated_at`, `created_at`) values ('complaint.store', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 1.13
+insert into `route_names` (`name`, `updated_at`, `created_at`) values ('complaint.update', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 1.11
+insert into `route_names` (`name`, `updated_at`, `created_at`) values ('dashboard', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 1.31
+insert into `route_names` (`name`, `updated_at`, `created_at`) values ('dashboard.ajax_admin_role_counters', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 1.06
+insert into `route_names` (`name`, `updated_at`, `created_at`) values ('department.activate', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 1.23
+insert into `route_names` (`name`, `updated_at`, `created_at`) values ('department.create', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 1.19
+insert into `route_names` (`name`, `updated_at`, `created_at`) values ('department.de_activate', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 0.94
+insert into `route_names` (`name`, `updated_at`, `created_at`) values ('department.destroy', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 1.18
+insert into `route_names` (`name`, `updated_at`, `created_at`) values ('department.edit', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 1.26
+insert into `route_names` (`name`, `updated_at`, `created_at`) values ('department.index', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 1.14
+insert into `route_names` (`name`, `updated_at`, `created_at`) values ('department.show', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 1.08
+insert into `route_names` (`name`, `updated_at`, `created_at`) values ('department.store', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 0.86
+insert into `route_names` (`name`, `updated_at`, `created_at`) values ('department.update', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 0.84
+insert into `route_names` (`name`, `updated_at`, `created_at`) values ('designation.activate', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 0.81
+insert into `route_names` (`name`, `updated_at`, `created_at`) values ('designation.create', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 0.82
+insert into `route_names` (`name`, `updated_at`, `created_at`) values ('designation.de_activate', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 1.09
+insert into `route_names` (`name`, `updated_at`, `created_at`) values ('designation.destroy', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 0.84
+insert into `route_names` (`name`, `updated_at`, `created_at`) values ('designation.edit', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 0.81
+insert into `route_names` (`name`, `updated_at`, `created_at`) values ('designation.index', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 0.82
+insert into `route_names` (`name`, `updated_at`, `created_at`) values ('designation.show', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 1.27
+insert into `route_names` (`name`, `updated_at`, `created_at`) values ('designation.store', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 0.85
+insert into `route_names` (`name`, `updated_at`, `created_at`) values ('designation.update', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 0.84
+insert into `route_names` (`name`, `updated_at`, `created_at`) values ('developer.laravel_routes_index', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 0.81
+insert into `route_names` (`name`, `updated_at`, `created_at`) values ('developer.sql_log', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 0.85
+insert into `route_names` (`name`, `updated_at`, `created_at`) values ('employee.activate', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 0.98
+insert into `route_names` (`name`, `updated_at`, `created_at`) values ('employee.create', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 0.86
+insert into `route_names` (`name`, `updated_at`, `created_at`) values ('employee.de_activate', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 0.82
+insert into `route_names` (`name`, `updated_at`, `created_at`) values ('employee.destroy', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 1.16
+insert into `route_names` (`name`, `updated_at`, `created_at`) values ('employee.edit', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 1.14
+insert into `route_names` (`name`, `updated_at`, `created_at`) values ('employee.index', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 0.87
+insert into `route_names` (`name`, `updated_at`, `created_at`) values ('employee.show', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 0.87
+insert into `route_names` (`name`, `updated_at`, `created_at`) values ('employee.store', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 0.82
+insert into `route_names` (`name`, `updated_at`, `created_at`) values ('employee.update', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 0.83
+insert into `route_names` (`name`, `updated_at`, `created_at`) values ('home', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 1.77
+insert into `route_names` (`name`, `updated_at`, `created_at`) values ('item.activate', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 1.1
+insert into `route_names` (`name`, `updated_at`, `created_at`) values ('item.ajax_get', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 0.86
+insert into `route_names` (`name`, `updated_at`, `created_at`) values ('item.create', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 1.22
+insert into `route_names` (`name`, `updated_at`, `created_at`) values ('item.csv', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 0.87
+insert into `route_names` (`name`, `updated_at`, `created_at`) values ('item.de_activate', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 0.85
+insert into `route_names` (`name`, `updated_at`, `created_at`) values ('item.destroy', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 0.87
+insert into `route_names` (`name`, `updated_at`, `created_at`) values ('item.edit', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 0.82
+insert into `route_names` (`name`, `updated_at`, `created_at`) values ('item.index', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 1.12
+insert into `route_names` (`name`, `updated_at`, `created_at`) values ('item.show', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 0.82
+insert into `route_names` (`name`, `updated_at`, `created_at`) values ('item.stock.detail', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 0.8
+insert into `route_names` (`name`, `updated_at`, `created_at`) values ('item.store', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 0.84
+insert into `route_names` (`name`, `updated_at`, `created_at`) values ('item.update', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 0.84
+insert into `route_names` (`name`, `updated_at`, `created_at`) values ('login', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 1.16
+insert into `route_names` (`name`, `updated_at`, `created_at`) values ('logout', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 0.83
+insert into `route_names` (`name`, `updated_at`, `created_at`) values ('logs.email', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 0.83
+insert into `route_names` (`name`, `updated_at`, `created_at`) values ('party.activate', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 0.83
+insert into `route_names` (`name`, `updated_at`, `created_at`) values ('party.ajax_get', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 1.1
+insert into `route_names` (`name`, `updated_at`, `created_at`) values ('party.create', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 0.92
+insert into `route_names` (`name`, `updated_at`, `created_at`) values ('party.de_activate', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 0.83
+insert into `route_names` (`name`, `updated_at`, `created_at`) values ('party.destroy', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 0.84
+insert into `route_names` (`name`, `updated_at`, `created_at`) values ('party.edit', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 0.85
+insert into `route_names` (`name`, `updated_at`, `created_at`) values ('party.index', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 0.95
+insert into `route_names` (`name`, `updated_at`, `created_at`) values ('party.show', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 1.13
+insert into `route_names` (`name`, `updated_at`, `created_at`) values ('party.store', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 0.84
+insert into `route_names` (`name`, `updated_at`, `created_at`) values ('party.update', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 0.84
+insert into `route_names` (`name`, `updated_at`, `created_at`) values ('password.confirm', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 0.83
+insert into `route_names` (`name`, `updated_at`, `created_at`) values ('password.email', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 0.82
+insert into `route_names` (`name`, `updated_at`, `created_at`) values ('password.request', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 0.85
+insert into `route_names` (`name`, `updated_at`, `created_at`) values ('password.reset', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 1.11
+insert into `route_names` (`name`, `updated_at`, `created_at`) values ('password.update', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 1.22
+insert into `route_names` (`name`, `updated_at`, `created_at`) values ('permissions.ajax_delete', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 0.83
+insert into `route_names` (`name`, `updated_at`, `created_at`) values ('permissions.ajax_get_permissions', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 0.83
+insert into `route_names` (`name`, `updated_at`, `created_at`) values ('permissions.ajax_request_access', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 0.87
+insert into `route_names` (`name`, `updated_at`, `created_at`) values ('permissions.assign', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 0.83
+insert into `route_names` (`name`, `updated_at`, `created_at`) values ('permissions.assign_to_many', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 1.17
+insert into `route_names` (`name`, `updated_at`, `created_at`) values ('permissions.index', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 0.84
+insert into `route_names` (`name`, `updated_at`, `created_at`) values ('product.activate', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 0.85
+insert into `route_names` (`name`, `updated_at`, `created_at`) values ('product.ajax_get', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 1.15
+insert into `route_names` (`name`, `updated_at`, `created_at`) values ('product.create', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 0.92
+insert into `route_names` (`name`, `updated_at`, `created_at`) values ('product.csv', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 0.84
+insert into `route_names` (`name`, `updated_at`, `created_at`) values ('product.de_activate', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 0.84
+insert into `route_names` (`name`, `updated_at`, `created_at`) values ('product.destroy', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 0.83
+insert into `route_names` (`name`, `updated_at`, `created_at`) values ('product.edit', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 0.84
+insert into `route_names` (`name`, `updated_at`, `created_at`) values ('product.index', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 0.9
+insert into `route_names` (`name`, `updated_at`, `created_at`) values ('product.show', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 0.96
+insert into `route_names` (`name`, `updated_at`, `created_at`) values ('product.store', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 0.82
+insert into `route_names` (`name`, `updated_at`, `created_at`) values ('product.update', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 1.18
+insert into `route_names` (`name`, `updated_at`, `created_at`) values ('proforma-invoice.ajax_get_items', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 0.86
+insert into `route_names` (`name`, `updated_at`, `created_at`) values ('proforma-invoice.create', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 0.84
+insert into `route_names` (`name`, `updated_at`, `created_at`) values ('proforma-invoice.csv', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 0.86
+insert into `route_names` (`name`, `updated_at`, `created_at`) values ('proforma-invoice.destroy', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 0.84
+insert into `route_names` (`name`, `updated_at`, `created_at`) values ('proforma-invoice.edit', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 0.86
+insert into `route_names` (`name`, `updated_at`, `created_at`) values ('proforma-invoice.index', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 0.85
+insert into `route_names` (`name`, `updated_at`, `created_at`) values ('proforma-invoice.pdf', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 0.89
+insert into `route_names` (`name`, `updated_at`, `created_at`) values ('proforma-invoice.print', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 0.9
+insert into `route_names` (`name`, `updated_at`, `created_at`) values ('proforma-invoice.show', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 1.25
+insert into `route_names` (`name`, `updated_at`, `created_at`) values ('proforma-invoice.store', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 0.88
+insert into `route_names` (`name`, `updated_at`, `created_at`) values ('proforma-invoice.update', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 0.83
+insert into `route_names` (`name`, `updated_at`, `created_at`) values ('public.', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 0.87
+insert into `route_names` (`name`, `updated_at`, `created_at`) values ('purchase-bill.ajax_get_items', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 0.9
+insert into `route_names` (`name`, `updated_at`, `created_at`) values ('purchase-bill.create', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 0.88
+insert into `route_names` (`name`, `updated_at`, `created_at`) values ('purchase-bill.csv', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 0.83
+insert into `route_names` (`name`, `updated_at`, `created_at`) values ('purchase-bill.destroy', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 0.81
+insert into `route_names` (`name`, `updated_at`, `created_at`) values ('purchase-bill.edit', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 0.81
+insert into `route_names` (`name`, `updated_at`, `created_at`) values ('purchase-bill.index', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 0.95
+insert into `route_names` (`name`, `updated_at`, `created_at`) values ('purchase-bill.pdf', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 0.92
+insert into `route_names` (`name`, `updated_at`, `created_at`) values ('purchase-bill.show', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 0.89
+insert into `route_names` (`name`, `updated_at`, `created_at`) values ('purchase-bill.store', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 0.83
+insert into `route_names` (`name`, `updated_at`, `created_at`) values ('purchase-bill.update', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 0.84
+insert into `route_names` (`name`, `updated_at`, `created_at`) values ('register', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 0.83
+insert into `route_names` (`name`, `updated_at`, `created_at`) values ('reports.inventory', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 0.86
+insert into `route_names` (`name`, `updated_at`, `created_at`) values ('reports.itemStock', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 0.88
+insert into `route_names` (`name`, `updated_at`, `created_at`) values ('reports.joborder', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 0.9
+insert into `route_names` (`name`, `updated_at`, `created_at`) values ('reports.joborderreceive', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 0.84
+insert into `route_names` (`name`, `updated_at`, `created_at`) values ('reports.ledger', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 1.02
+insert into `route_names` (`name`, `updated_at`, `created_at`) values ('reports.party_products', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 0.83
+insert into `route_names` (`name`, `updated_at`, `created_at`) values ('reports.stock_movement', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 0.84
+insert into `route_names` (`name`, `updated_at`, `created_at`) values ('role.activate', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 0.98
+insert into `route_names` (`name`, `updated_at`, `created_at`) values ('role.create', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 0.83
+insert into `route_names` (`name`, `updated_at`, `created_at`) values ('role.de_activate', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 0.81
+insert into `route_names` (`name`, `updated_at`, `created_at`) values ('role.destroy', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 0.81
+insert into `route_names` (`name`, `updated_at`, `created_at`) values ('role.edit', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 0.8
+insert into `route_names` (`name`, `updated_at`, `created_at`) values ('role.index', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 0.8
+insert into `route_names` (`name`, `updated_at`, `created_at`) values ('role.show', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 1.55
+insert into `route_names` (`name`, `updated_at`, `created_at`) values ('role.store', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 1
+insert into `route_names` (`name`, `updated_at`, `created_at`) values ('role.update', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 0.89
+insert into `route_names` (`name`, `updated_at`, `created_at`) values ('sale-bill.ajax_get_items', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 1.1
+insert into `route_names` (`name`, `updated_at`, `created_at`) values ('sale-bill.create', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 0.95
+insert into `route_names` (`name`, `updated_at`, `created_at`) values ('sale-bill.csv', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 1.01
+insert into `route_names` (`name`, `updated_at`, `created_at`) values ('sale-bill.destroy', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 0.84
+insert into `route_names` (`name`, `updated_at`, `created_at`) values ('sale-bill.edit', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 1.03
+insert into `route_names` (`name`, `updated_at`, `created_at`) values ('sale-bill.index', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 0.93
+insert into `route_names` (`name`, `updated_at`, `created_at`) values ('sale-bill.pdf', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 0.84
+insert into `route_names` (`name`, `updated_at`, `created_at`) values ('sale-bill.print', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 0.84
+insert into `route_names` (`name`, `updated_at`, `created_at`) values ('sale-bill.show', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 0.86
+insert into `route_names` (`name`, `updated_at`, `created_at`) values ('sale-bill.store', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 0.86
+insert into `route_names` (`name`, `updated_at`, `created_at`) values ('sale-bill.update', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 0.82
+insert into `route_names` (`name`, `updated_at`, `created_at`) values ('sanctum.csrf-cookie', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 1.31
+insert into `route_names` (`name`, `updated_at`, `created_at`) values ('settings.general', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 0.89
+insert into `route_names` (`name`, `updated_at`, `created_at`) values ('staff-type.activate', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 1.06
+insert into `route_names` (`name`, `updated_at`, `created_at`) values ('staff-type.ajax_get', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 0.89
+insert into `route_names` (`name`, `updated_at`, `created_at`) values ('staff-type.create', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 0.83
+insert into `route_names` (`name`, `updated_at`, `created_at`) values ('staff-type.de_activate', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 0.81
+insert into `route_names` (`name`, `updated_at`, `created_at`) values ('staff-type.destroy', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 0.83
+insert into `route_names` (`name`, `updated_at`, `created_at`) values ('staff-type.edit', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 0.83
+insert into `route_names` (`name`, `updated_at`, `created_at`) values ('staff-type.index', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 0.82
+insert into `route_names` (`name`, `updated_at`, `created_at`) values ('staff-type.show', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 0.81
+insert into `route_names` (`name`, `updated_at`, `created_at`) values ('staff-type.store', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 0.79
+insert into `route_names` (`name`, `updated_at`, `created_at`) values ('staff-type.update', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 0.8
+insert into `route_names` (`name`, `updated_at`, `created_at`) values ('state.create', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 0.93
+insert into `route_names` (`name`, `updated_at`, `created_at`) values ('state.destroy', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 0.83
+insert into `route_names` (`name`, `updated_at`, `created_at`) values ('state.edit', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 0.82
+insert into `route_names` (`name`, `updated_at`, `created_at`) values ('state.index', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 0.82
+insert into `route_names` (`name`, `updated_at`, `created_at`) values ('state.show', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 0.83
+insert into `route_names` (`name`, `updated_at`, `created_at`) values ('state.store', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 1.29
+insert into `route_names` (`name`, `updated_at`, `created_at`) values ('state.update', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 0.84
+insert into `route_names` (`name`, `updated_at`, `created_at`) values ('storage.local', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 0.8
+insert into `route_names` (`name`, `updated_at`, `created_at`) values ('user.activate', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 0.81
+insert into `route_names` (`name`, `updated_at`, `created_at`) values ('user.change.password', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 1.21
+insert into `route_names` (`name`, `updated_at`, `created_at`) values ('user.create', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 0.96
+insert into `route_names` (`name`, `updated_at`, `created_at`) values ('user.de_activate', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 0.86
+insert into `route_names` (`name`, `updated_at`, `created_at`) values ('user.destroy', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 0.9
+insert into `route_names` (`name`, `updated_at`, `created_at`) values ('user.edit', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 0.81
+insert into `route_names` (`name`, `updated_at`, `created_at`) values ('user.index', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 0.8
+insert into `route_names` (`name`, `updated_at`, `created_at`) values ('user.my.profile', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 0.97
+insert into `route_names` (`name`, `updated_at`, `created_at`) values ('user.store', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 0.91
+insert into `route_names` (`name`, `updated_at`, `created_at`) values ('user.update', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 1.01
+insert into `route_names` (`name`, `updated_at`, `created_at`) values ('verify.otp', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 2.02
+insert into `route_names` (`name`, `updated_at`, `created_at`) values ('warehouse.activate', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 1.11
+insert into `route_names` (`name`, `updated_at`, `created_at`) values ('warehouse.create', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 1.01
+insert into `route_names` (`name`, `updated_at`, `created_at`) values ('warehouse.csv', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 0.96
+insert into `route_names` (`name`, `updated_at`, `created_at`) values ('warehouse.de_activate', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 0.96
+insert into `route_names` (`name`, `updated_at`, `created_at`) values ('warehouse.destroy', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 0.83
+insert into `route_names` (`name`, `updated_at`, `created_at`) values ('warehouse.edit', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 0.8
+insert into `route_names` (`name`, `updated_at`, `created_at`) values ('warehouse.index', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 0.86
+insert into `route_names` (`name`, `updated_at`, `created_at`) values ('warehouse.show', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 0.93
+insert into `route_names` (`name`, `updated_at`, `created_at`) values ('warehouse.store', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 0.82
+insert into `route_names` (`name`, `updated_at`, `created_at`) values ('warehouse.update', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 1.2
+insert into `cache` (`expiration`, `key`, `value`) values ('2084352274', 'laravel_cache_table-info-role_route_names', 'a:1:{s:7:"columns";a:7:{s:2:"id";a:6:{s:5:"Field";s:2:"id";s:4:"Type";s:19:"bigint(20) unsigned";s:4:"Null";s:2:"NO";s:3:"Key";s:3:"PRI";s:7:"Default";N;s:5:"Extra";s:14:"auto_increment";}s:7:"role_id";a:6:{s:5:"Field";s:7:"role_id";s:4:"Type";s:19:"bigint(20) unsigned";s:4:"Null";s:2:"NO";s:3:"Key";s:3:"MUL";s:7:"Default";N;s:5:"Extra";s:0:"";}s:13:"route_name_id";a:6:{s:5:"Field";s:13:"route_name_id";s:4:"Type";s:19:"bigint(20) unsigned";s:4:"Null";s:2:"NO";s:3:"Key";s:3:"MUL";s:7:"Default";N;s:5:"Extra";s:0:"";}s:10:"created_at";a:6:{s:5:"Field";s:10:"created_at";s:4:"Type";s:9:"timestamp";s:4:"Null";s:3:"YES";s:3:"Key";s:0:"";s:7:"Default";N;s:5:"Extra";s:0:"";}s:10:"updated_at";a:6:{s:5:"Field";s:10:"updated_at";s:4:"Type";s:9:"timestamp";s:4:"Null";s:3:"YES";s:3:"Key";s:0:"";s:7:"Default";N;s:5:"Extra";s:0:"";}s:10:"created_by";a:6:{s:5:"Field";s:10:"created_by";s:4:"Type";s:10:"bigint(20)";s:4:"Null";s:3:"YES";s:3:"Key";s:0:"";s:7:"Default";N;s:5:"Extra";s:0:"";}s:10:"updated_by";a:6:{s:5:"Field";s:10:"updated_by";s:4:"Type";s:10:"bigint(20)";s:4:"Null";s:3:"YES";s:3:"Key";s:0:"";s:7:"Default";N;s:5:"Extra";s:0:"";}}}') on duplicate key update `expiration` = values(`expiration`), `key` = values(`key`), `value` = values(`value`), 3.37
+insert into `role_route_names` (`role_id`, `route_name_id`, `created_by`, `updated_at`, `created_at`) values ('1', '4', '1', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 1.55
+insert into `role_route_names` (`role_id`, `route_name_id`, `created_by`, `updated_at`, `created_at`) values ('1', '1', '1', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 0.97
+insert into `role_route_names` (`role_id`, `route_name_id`, `created_by`, `updated_at`, `created_at`) values ('1', '6', '1', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 1.54
+insert into `role_route_names` (`role_id`, `route_name_id`, `created_by`, `updated_at`, `created_at`) values ('1', '3', '1', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 0.87
+insert into `role_route_names` (`role_id`, `route_name_id`, `created_by`, `updated_at`, `created_at`) values ('1', '7', '1', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 1.33
+insert into `role_route_names` (`role_id`, `route_name_id`, `created_by`, `updated_at`, `created_at`) values ('1', '2', '1', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 1.32
+insert into `role_route_names` (`role_id`, `route_name_id`, `created_by`, `updated_at`, `created_at`) values ('1', '38', '1', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 1.38
+insert into `role_route_names` (`role_id`, `route_name_id`, `created_by`, `updated_at`, `created_at`) values ('1', '45', '1', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 1.28
+insert into `role_route_names` (`role_id`, `route_name_id`, `created_by`, `updated_at`, `created_at`) values ('1', '41', '1', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 1.22
+insert into `role_route_names` (`role_id`, `route_name_id`, `created_by`, `updated_at`, `created_at`) values ('1', '47', '1', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 1.31
+insert into `role_route_names` (`role_id`, `route_name_id`, `created_by`, `updated_at`, `created_at`) values ('1', '44', '1', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 1.24
+insert into `role_route_names` (`role_id`, `route_name_id`, `created_by`, `updated_at`, `created_at`) values ('1', '48', '1', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 1.2
+insert into `role_route_names` (`role_id`, `route_name_id`, `created_by`, `updated_at`, `created_at`) values ('1', '43', '1', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 1.25
+insert into `role_route_names` (`role_id`, `route_name_id`, `created_by`, `updated_at`, `created_at`) values ('1', '54', '1', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 1.26
+insert into `role_route_names` (`role_id`, `route_name_id`, `created_by`, `updated_at`, `created_at`) values ('1', '50', '1', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 1.19
+insert into `role_route_names` (`role_id`, `route_name_id`, `created_by`, `updated_at`, `created_at`) values ('1', '56', '1', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 0.88
+insert into `role_route_names` (`role_id`, `route_name_id`, `created_by`, `updated_at`, `created_at`) values ('1', '53', '1', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 8.07
+insert into `role_route_names` (`role_id`, `route_name_id`, `created_by`, `updated_at`, `created_at`) values ('1', '57', '1', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 1.13
+insert into `role_route_names` (`role_id`, `route_name_id`, `created_by`, `updated_at`, `created_at`) values ('1', '52', '1', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 1.11
+insert into `role_route_names` (`role_id`, `route_name_id`, `created_by`, `updated_at`, `created_at`) values ('1', '65', '1', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 1.01
+insert into `role_route_names` (`role_id`, `route_name_id`, `created_by`, `updated_at`, `created_at`) values ('1', '61', '1', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 1.51
+insert into `role_route_names` (`role_id`, `route_name_id`, `created_by`, `updated_at`, `created_at`) values ('1', '67', '1', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 1.58
+insert into `role_route_names` (`role_id`, `route_name_id`, `created_by`, `updated_at`, `created_at`) values ('1', '64', '1', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 0.94
+insert into `role_route_names` (`role_id`, `route_name_id`, `created_by`, `updated_at`, `created_at`) values ('1', '68', '1', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 0.85
+insert into `role_route_names` (`role_id`, `route_name_id`, `created_by`, `updated_at`, `created_at`) values ('1', '63', '1', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 0.87
+insert into `role_route_names` (`role_id`, `route_name_id`, `created_by`, `updated_at`, `created_at`) values ('1', '28', '1', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 0.85
+insert into `role_route_names` (`role_id`, `route_name_id`, `created_by`, `updated_at`, `created_at`) values ('1', '29', '1', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 0.87
+insert into `role_route_names` (`role_id`, `route_name_id`, `created_by`, `updated_at`, `created_at`) values ('1', '24', '1', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 0.88
+insert into `role_route_names` (`role_id`, `route_name_id`, `created_by`, `updated_at`, `created_at`) values ('1', '21', '1', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 0.84
+insert into `role_route_names` (`role_id`, `route_name_id`, `created_by`, `updated_at`, `created_at`) values ('1', '26', '1', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 1.98
+insert into `role_route_names` (`role_id`, `route_name_id`, `created_by`, `updated_at`, `created_at`) values ('1', '23', '1', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 0.93
+insert into `role_route_names` (`role_id`, `route_name_id`, `created_by`, `updated_at`, `created_at`) values ('1', '27', '1', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 1.21
+insert into `role_route_names` (`role_id`, `route_name_id`, `created_by`, `updated_at`, `created_at`) values ('1', '22', '1', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 0.91
+insert into `role_route_names` (`role_id`, `route_name_id`, `created_by`, `updated_at`, `created_at`) values ('1', '25', '1', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 0.91
+insert into `role_route_names` (`role_id`, `route_name_id`, `created_by`, `updated_at`, `created_at`) values ('1', '175', '1', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 0.95
+insert into `role_route_names` (`role_id`, `route_name_id`, `created_by`, `updated_at`, `created_at`) values ('1', '171', '1', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 0.89
+insert into `role_route_names` (`role_id`, `route_name_id`, `created_by`, `updated_at`, `created_at`) values ('1', '177', '1', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 1.13
+insert into `role_route_names` (`role_id`, `route_name_id`, `created_by`, `updated_at`, `created_at`) values ('1', '174', '1', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 0.99
+insert into `role_route_names` (`role_id`, `route_name_id`, `created_by`, `updated_at`, `created_at`) values ('1', '178', '1', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 0.92
+insert into `role_route_names` (`role_id`, `route_name_id`, `created_by`, `updated_at`, `created_at`) values ('1', '173', '1', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 0.93
+insert into `role_route_names` (`role_id`, `route_name_id`, `created_by`, `updated_at`, `created_at`) values ('1', '168', '1', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 0.92
+insert into `role_route_names` (`role_id`, `route_name_id`, `created_by`, `updated_at`, `created_at`) values ('1', '193', '1', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 0.91
+insert into `role_route_names` (`role_id`, `route_name_id`, `created_by`, `updated_at`, `created_at`) values ('1', '189', '1', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 1
+insert into `role_route_names` (`role_id`, `route_name_id`, `created_by`, `updated_at`, `created_at`) values ('1', '195', '1', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 1.09
+insert into `role_route_names` (`role_id`, `route_name_id`, `created_by`, `updated_at`, `created_at`) values ('1', '192', '1', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 0.93
+insert into `role_route_names` (`role_id`, `route_name_id`, `created_by`, `updated_at`, `created_at`) values ('1', '196', '1', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 0.88
+insert into `role_route_names` (`role_id`, `route_name_id`, `created_by`, `updated_at`, `created_at`) values ('1', '191', '1', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 0.87
+insert into `role_route_names` (`role_id`, `route_name_id`, `created_by`, `updated_at`, `created_at`) values ('1', '152', '1', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 0.89
+insert into `role_route_names` (`role_id`, `route_name_id`, `created_by`, `updated_at`, `created_at`) values ('1', '148', '1', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 0.91
+insert into `role_route_names` (`role_id`, `route_name_id`, `created_by`, `updated_at`, `created_at`) values ('1', '154', '1', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 0.94
+insert into `role_route_names` (`role_id`, `route_name_id`, `created_by`, `updated_at`, `created_at`) values ('1', '151', '1', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 0.89
+insert into `role_route_names` (`role_id`, `route_name_id`, `created_by`, `updated_at`, `created_at`) values ('1', '155', '1', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 1.36
+insert into `role_route_names` (`role_id`, `route_name_id`, `created_by`, `updated_at`, `created_at`) values ('1', '150', '1', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 0.91
+insert into `role_route_names` (`role_id`, `route_name_id`, `created_by`, `updated_at`, `created_at`) values ('1', '15', '1', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 1.2
+insert into `role_route_names` (`role_id`, `route_name_id`, `created_by`, `updated_at`, `created_at`) values ('1', '10', '1', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 0.86
+insert into `role_route_names` (`role_id`, `route_name_id`, `created_by`, `updated_at`, `created_at`) values ('1', '17', '1', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 0.88
+insert into `role_route_names` (`role_id`, `route_name_id`, `created_by`, `updated_at`, `created_at`) values ('1', '14', '1', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 0.89
+insert into `role_route_names` (`role_id`, `route_name_id`, `created_by`, `updated_at`, `created_at`) values ('1', '18', '1', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 0.86
+insert into `role_route_names` (`role_id`, `route_name_id`, `created_by`, `updated_at`, `created_at`) values ('1', '13', '1', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 0.86
+insert into `role_route_names` (`role_id`, `route_name_id`, `created_by`, `updated_at`, `created_at`) values ('1', '59', '1', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 1.28
+insert into `role_route_names` (`role_id`, `route_name_id`, `created_by`, `updated_at`, `created_at`) values ('1', '58', '1', '2026-01-21 10:44:34', '2026-01-21 10:44:34'), 0.93
+delete from `cache` where `key` in ('laravel_cache_menu_user_1', 'laravel_cache_illuminate:cache:flexible:created:menu_user_1'), 0.92
