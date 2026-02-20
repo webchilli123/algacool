@@ -139,11 +139,10 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('reports-joborder', [ReportController::class, 'job_order'])->name('reports.joborder');
     Route::get('reports-joborderreceive', [ReportController::class, 'job_order_receive'])->name('reports.joborderreceive');
 
-
     $controller_prefix = "lead";
     $controllerClass = LeadController::class;
     Route::resource($controller_prefix, $controllerClass);
-    Route::put('/leads/update-missed', [$controller_prefix, 'updateMissed'])->name('leads.updateMissed');
+    Route::post('/lead/update-missed', [LeadController::class, 'updateMissed'])->name('lead.updateMissed');
     Route::get('get-lead', [LeadController::class, 'getLead'])->name('get-lead');
 
     $controller_prefix = "source";

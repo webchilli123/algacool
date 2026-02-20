@@ -153,8 +153,9 @@
                     </table>
                 </div>
                 <div class="row mb-2">
-                    <div class="col-md-6 mb-3">
-                        <x-Inputs.text-area name="comments" label="Comments" :value="$model->comments" />
+                    <div class="col-md-6 mb-2">
+                        <x-Inputs.drop-down name="assigned_user_id" id="Assigned User" label="Assigned User" :list="$userList"
+                            class="form-control select2" :value="old('assigned_user_id', $model->assigned_user_id ?? '')" :mandatory="true" />
                     </div>
                     <div class="col-md-6 mb-2">
                         <x-Inputs.drop-down name="status" id="status-dropdown" label="Status" :list="$statusList"
@@ -181,6 +182,11 @@
                     <div class="col-md-6 mb-2">
                         <x-Inputs.drop-down name="mature_action_type" label="Action To Take *" :list="$maturefieldList"
                             :value="old('mature_action_type', $model->mature_action_type ?? '')" class="form-control select2" />
+                    </div>
+                </div>
+                <div class="row mb-2">
+                    <div class="col-md-12 mb-3">
+                        <x-Inputs.text-area name="comments" label="Comments" :value="$model->comments" />
                     </div>
                 </div>
             <div class="form-buttons">

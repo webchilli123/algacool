@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Backend;
 
 use App\Helpers\DateUtility;
 use App\Models\Complaint;
+use App\Models\Followup;
 use App\Models\JobOrder;
 use App\Models\Lead;
 use App\Models\NewComplaint;
@@ -54,37 +55,31 @@ class DashboardController extends BackendController
     {
         $auth_user = Auth::user();
 
-        // dd($auth_user['id']);
-
-         $today = Carbon::today();
+        $today = Carbon::today();
         $next7 = Carbon::today()->addDays(7);
 
-        // 1. Today’s Leads
         $todayLeads = Lead::where('follow_up_user_id', $auth_user['id'])
-                            ->whereDate('follow_up_date', $today)
-                            ->where('status', '!=', 'not_interested')
-                            ->orderBy('follow_up_date','desc')->get();
+            ->whereDate('follow_up_date', $today)
+            ->where('status', '!=', 'not_interested')
+            ->orderBy('follow_up_date', 'desc')->get();
 
-        // 2. Missing Leads (follow-up date < today and still not done)
         $missingLeads = Lead::where('follow_up_user_id', $auth_user['id'])
             ->whereNotNull('follow_up_date')
             ->whereDate('follow_up_date', '<', $today)
             ->where('status', '!=', 'not_interested')
-            ->orderBy('follow_up_date','desc')
+            ->orderBy('follow_up_date', 'desc')
             ->limit(10)
             ->get();
 
-        // 3. Next 7 days leads
         $nextDaysLeads = Lead::where('follow_up_user_id', $auth_user['id'])
             ->whereNotNull('follow_up_date')
             ->whereBetween('follow_up_date', [$today, $next7])
             ->where('status', '!=', 'not_interested')
-            ->orderBy('follow_up_date','desc')
+            ->orderBy('follow_up_date', 'desc')
             ->get();
 
         $followtypeList = config('constant.followuptype');
         $statusList = config('constant.status');
-       
 
         $this->setForView(compact("todayLeads", "missingLeads", "nextDaysLeads", "followtypeList", "statusList"));
 
@@ -109,32 +104,64 @@ class DashboardController extends BackendController
         } else if ($duration_type == "this_year") {
             $date = date("Y-01-01");
         }
-        
-        // complaints by status
-        // $complaint_counters["Pending"] = Complaint::where("status", "pending")->where("date", ">=", $date)->count();
-        
-        // $complaint_counters["In-Progress"] = Complaint::where("status", "in_progress")->where("date", ">=", $date)->count();
-        
-        // $complaint_counters["Hold"] = Complaint::where("status", "hold")->where("date", ">=", $date)->count();
-        
-        // $complaint_counters["Done"] = Complaint::where("status", "done")->where("date", ">=", $date)->count();
 
-        // complaints by level
-        // $complaint_counters["Hot"] = Complaint::where("level", "hot")->where("date", ">=", $date)->count();
-        
-        // $complaint_counters["Cold"] = Complaint::where("level", "cold")->where("date", ">=", $date)->count();
-        
-        // $complaint_counters["Warm"] = Complaint::where("level", "warm")->where("date", ">=", $date)->count();
+        $lead_counters["Pending"] = Lead::where("status", "pending")->where("date", ">=", $date)->count();
+        $lead_counters["Not-interested"] = Lead::where("status", "not_interested")->where("date", ">=", $date)->count();
+        $lead_counters["Follow Up"] = Lead::where("status", "follow_up")->where("date", ">=", $date)->count();
+        $lead_counters["Mature"] = Lead::where("status", "mature")->where("date", ">=", $date)->count();
 
-        // $tComplaints = Complaint::count();
-        // $tPI = ProformaInvoice::count();
-        // $tParties = Party::count();
-        $complaint_counters = "";
-        $tComplaints = "";
-        $tPI = "";
-        $tParties = "";
+        $lead_counters["Hot"] = Lead::where("level", "hot")->where("date", ">=", $date)->count();
+        $lead_counters["Cold"] = Lead::where("level", "cold")->where("date", ">=", $date)->count();
+        $lead_counters["Warm"] = Lead::where("level", "warm")->where("date", ">=", $date)->count();
 
-        $this->setForView(compact("complaint_counters","tComplaints","tPI","tParties"));
+        $tLeads = Lead::count();
+        $tParties = Party::count();
+
+        $today = Carbon::today();
+        $next7 = Carbon::today()->addDays(7);
+
+        $todayLeads = Lead::with('latestFollowUp')
+            ->whereHas('latestFollowUp', function ($q) use ($today) {
+                $q->whereDate('follow_up_date', $today);
+            })
+            ->orderByDesc(
+                Followup::select('follow_up_date')
+                    ->whereColumn('followups.lead_id', 'leads.id')
+                    ->latest()
+                    ->limit(1)
+            )
+            ->get();
+
+        $missingLeads = Lead::with('latestFollowUp')
+            ->whereHas('latestFollowUp', function ($q) use ($today) {
+                $q->whereDate('follow_up_date', '<', $today);
+            })
+            ->where('status', '!=', 'Closed')
+            ->orderByDesc(
+                Followup::select('follow_up_date')
+                    ->whereColumn('followups.lead_id', 'leads.id')
+                    ->latest()
+                    ->limit(1)
+            )
+            ->limit(10)
+            ->get();
+
+        $nextDaysLeads = Lead::with('latestFollowUp')
+            ->whereHas('latestFollowUp', function ($q) use ($today, $next7) {
+                $q->whereBetween('follow_up_date', [$today, $next7]);
+            })
+            ->orderByDesc(
+                Followup::select('follow_up_date')
+                    ->whereColumn('followups.lead_id', 'leads.id')
+                    ->latest()
+                    ->limit(1)
+            )
+            ->get();
+
+        $followtypeList = config('constant.followuptype');
+        $statusList = config('constant.status');
+
+        $this->setForView(compact("lead_counters", "tLeads", "tParties", "todayLeads", "missingLeads", "nextDaysLeads", "followtypeList", "statusList"));
 
         return $this->view(__FUNCTION__);
     }

@@ -31,7 +31,7 @@ class LeadController extends BackendController
         $conditions = $this->_get_conditions(Route::currentRouteName());
 
         $query = $this->modelClass::where($conditions)
-        ->with(["leadItem", "party", "user", "followups" => function ($q){
+        ->with(["leadItem", "party", "user","assignedUser", "followups" => function ($q){
             $q->orderBy('id', 'desc');
         }])->orderBy('id', 'desc');
 
@@ -132,13 +132,14 @@ class LeadController extends BackendController
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+       private function _common_validation_rules()
     {
-        $validate_data = $request->validate([
+        return [
             'date' => 'required|date',
             'level' => 'required|string',
             'party_id' => 'nullable|integer',
             'is_new' => 'nullable|integer',
+            'assigned_user_id' => 'nullable|integer|exists:users,id',
             'customer_name' => 'nullable|string',
             'customer_email' => 'nullable|email',
             'firm_name' => 'nullable|string',
@@ -146,51 +147,97 @@ class LeadController extends BackendController
             'alternate_number' => 'nullable|numeric',
             'customer_website' => 'nullable|string',
             'customer_address' => 'nullable|string',
+
             'status' => 'nullable|string',
             'lead_source_id' => 'required|string',
             'not_in_interested_reason' => 'nullable|string',
+
             'follow_up_date' => 'nullable|date',
             'follow_up_type' => 'nullable|string',
             'mature_action_type' => 'nullable|string',
             'comments' => 'nullable|string',
+
             'is_include_items' => 'nullable|integer',
             'lead_items' => 'nullable|array',
             'lead_items.item_id.*' => 'nullable|integer',
             'lead_items.qty.*' => 'nullable|numeric|min:1',
-        ]);
+        ];
+    }
+
+
+    private function _common_validation_messages()
+    {
+        return [
+            'date.required' => 'Lead date is required',
+            'date.date' => 'Invalid lead date',
+
+            'level.required' => 'Lead level is required',
+
+            'lead_source_id.required' => 'Lead source is required',
+
+            'customer_email.email' => 'Invalid email address',
+            'assigned_user_id.exists' => 'Selected assigned user does not exist',
+
+            'lead_items.qty.*.min' => 'Quantity must be at least 1',
+        ];
+    }
+
+    public function store(Request $request)
+    {
+        $this->beforeCreate();
+
+        $rules = $this->_common_validation_rules();
+        $messages = $this->_common_validation_messages();
+
+        $validatedData = $request->validate($rules, $messages);
+
+        DB::beginTransaction();
+
         try {
-            $lead_items = $validate_data['lead_items'] ?? [];
+            // Separate lead items
+            $leadItems = $validatedData['lead_items'] ?? [];
+            unset($validatedData['lead_items']);
 
-            unset($validate_data['lead_items']);
+            // Extra fields
+            $validatedData['follow_up_user_id'] = Auth::id();
 
-            $validate_data['follow_up_user_id'] = Auth::id();
+            // Create Lead
+            $lead = Lead::create($validatedData);
 
-            $leads = Lead::create($validate_data);
-            if (!empty($lead_items)) {
-                foreach ($lead_items['item_id'] as $index => $item) {
+            // Save Lead Items
+            if (!empty($leadItems)) {
+                foreach ($leadItems['item_id'] as $index => $itemId) {
                     LeadItem::create([
-                        'item_id' => $item ?? null,
-                        'qty' => $lead_items['qty'][$index] ?? null,
-                        'lead_id' => $leads->id,
+                        'lead_id' => $lead->id,
+                        'item_id' => $itemId ?? null,
+                        'qty' => $leadItems['qty'][$index] ?? null,
                     ]);
                 }
             }
 
-            if (!empty($validate_data['follow_up_date']) || !empty($validate_data['follow_up_type']) || !empty($validate_data['comments'])) {
+            // Save Follow-up (only if any follow-up data exists)
+            if (
+                !empty($validatedData['follow_up_date']) ||
+                !empty($validatedData['follow_up_type']) ||
+                !empty($validatedData['comments'])
+            ) {
                 Followup::create([
-                    'lead_id' => $leads->id,
-                    // 'follow_up_date' => $validate_data['follow_up_date'] ?? now(),
-                    'follow_up_date' => !empty($validate_data['follow_up_date']) 
-        ? Carbon::parse($validate_data['follow_up_date'])->format('Y-m-d') 
-        : now()->format('Y-m-d'),
-                    'follow_up_type' => $validate_data['follow_up_type'] ?? null,
-                    'comments' => $validate_data['comments'] ?? null,
+                    'lead_id' => $lead->id,
+                    'follow_up_date' => !empty($validatedData['follow_up_date'])
+                        ? Carbon::parse($validatedData['follow_up_date'])->format('Y-m-d')
+                        : now()->format('Y-m-d'),
+                    'follow_up_type' => $validatedData['follow_up_type'] ?? null,
+                    'comments' => $validatedData['comments'] ?? null,
                     'follow_up_user_id' => Auth::id(),
                 ]);
             }
 
+            DB::commit();
+
             return back()->with('success', 'Lead created successfully');
         } catch (\Exception $ex) {
+            DB::rollBack();
+
             return back()->withInput()->with('fail', $ex->getMessage());
         }
     }
@@ -249,100 +296,110 @@ class LeadController extends BackendController
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
-    {
-        $lead = Lead::findOrFail($id);
-        $validate_data = $request->validate([
-            'date' => 'required|date',
-            'level' => 'required|string',
-            'party_id' => 'nullable|integer',
-            'is_new' => 'nullable|integer',
-            'customer_name' => 'nullable|string',
-            'customer_email' => 'nullable|email',
-            'firm_name' => 'nullable|string',
-            'customer_number' => 'nullable|numeric',
-            'alternate_number' => 'nullable|numeric',
-            'customer_website' => 'nullable|string',
-            'customer_address' => 'nullable|string',
-            'status' => 'required|string',
-            'lead_source_id' => 'required|string',
-            'not_in_interested_reason' => 'nullable|string',
-            'follow_up_date' => 'nullable|date',
-            'follow_up_type' => 'nullable|string',
-            'mature_action_type' => 'nullable|string',
-            'comments' => 'nullable|string',
-            'is_include_items' => 'nullable|integer',
+{
+    $this->beforeCreate();
 
-            'lead_items' => 'nullable|array',
-            'lead_items.*.item_id' => 'nullable|integer',
-            'lead_items.*.qty' => 'nullable|numeric|min:1',
-        ]);
-        
-        try {
-            $validate_data['lead_items'] ?? [];
-            // dd($lead_items);
+    $lead = Lead::findOrFail($id);
 
-            unset($validate_data['lead_items']);
+    $rules = $this->_common_validation_rules();
+    $messages = $this->_common_validation_messages();
 
-            // $validate_data['follow_up_user_id'] = Auth::id();
+    // extra rule only for update
+    $rules['status'] = 'required|string';
 
-            // Create the lead
-            $lead->update($validate_data);
+    $validatedData = $request->validate($rules, $messages);
 
-            $existingItems = LeadItem::where('lead_id', $id)->get()->keyBy('id');
+    DB::beginTransaction();
 
-            $leadItems = $request->lead_items ?? [];
+    try {
+        // Separate lead items
+        $leadItems = $validatedData['lead_items'] ?? [];
+        unset($validatedData['lead_items']);
 
-            if (!empty($leadItems['item_id']) && is_array($leadItems['item_id'])) {
-                foreach ($leadItems['item_id'] as $index => $itemId) {
-                    if (empty($itemId)) {
-                        continue;
-                    }
+        // Update Lead
+        $lead->update($validatedData);
 
-                    $qty = $leadItems['qty'][$index] ?? 0;
+        /*
+        |--------------------------------------------------------------------------
+        | Handle Lead Items (Update / Create / Delete)
+        |--------------------------------------------------------------------------
+        */
+        $existingItems = LeadItem::where('lead_id', $lead->id)
+            ->get()
+            ->keyBy('id');
 
-                    if (!empty($leadItems['id'][$index])) {
-                        $item = LeadItem::find($leadItems['id'][$index]);
-                        if ($item) {
-                            $item->update([
-                                'item_id' => $itemId,
-                                'qty' => $qty
-                            ]);
-                            unset($existingItems[$item->id]);
-                        }
-                    } else {
-                        LeadItem::create([
-                            'lead_id' => $id,
-                            'item_id' => $itemId,
-                            'qty' => $qty
-                        ]);
-                    }
+        if (!empty($leadItems['item_id']) && is_array($leadItems['item_id'])) {
+            foreach ($leadItems['item_id'] as $index => $itemId) {
+
+                if (empty($itemId)) {
+                    continue;
+                }
+
+                $qty = $leadItems['qty'][$index] ?? 0;
+                $itemRowId = $leadItems['id'][$index] ?? null;
+
+                if ($itemRowId && isset($existingItems[$itemRowId])) {
+                    // Update existing
+                    $existingItems[$itemRowId]->update([
+                        'item_id' => $itemId,
+                        'qty'     => $qty,
+                    ]);
+
+                    unset($existingItems[$itemRowId]);
+                } else {
+                    // Create new
+                    LeadItem::create([
+                        'lead_id' => $lead->id,
+                        'item_id' => $itemId,
+                        'qty'     => $qty,
+                    ]);
                 }
             }
-
-            if ($existingItems->isNotEmpty()) {
-                LeadItem::destroy($existingItems->keys());
-            }
-
-            if (!empty($validate_data['follow_up_date']) || !empty($validate_data['follow_up_type']) || !empty($validate_data['comments'])) {
-                Followup::create([
-                    'lead_id' => $lead->id,
-                    // 'follow_up_date' => $validate_data['follow_up_date'] ?? now(),
-                    'follow_up_date' => !empty($validate_data['follow_up_date']) 
-        ? Carbon::parse($validate_data['follow_up_date'])->format('Y-m-d') 
-        : now()->format('Y-m-d'),
-                    'follow_up_type' => $validate_data['follow_up_type'] ?? null,
-                    'comments' => $validate_data['comments'] ?? null,
-                    'follow_up_user_id' => Auth::id(),
-                ]);
-            }
-
-            return redirect()->route($this->routePrefix . ".index")->with('success', 'Lead updated successfully');
-        } catch (\Exception $ex) {
-            return back()->withInput()->with('fail', $ex->getMessage());
         }
-    }
 
-    public function updateMissed(Request $request)
+        // Delete removed items
+        if ($existingItems->isNotEmpty()) {
+            LeadItem::destroy($existingItems->keys());
+        }
+
+        /*
+        |--------------------------------------------------------------------------
+        | Follow-up (Create new entry only)
+        |--------------------------------------------------------------------------
+        */
+        if (
+            !empty($validatedData['follow_up_date']) ||
+            !empty($validatedData['follow_up_type']) ||
+            !empty($validatedData['comments'])
+        ) {
+            Followup::create([
+                'lead_id' => $lead->id,
+                'follow_up_date' => !empty($validatedData['follow_up_date'])
+                    ? Carbon::parse($validatedData['follow_up_date'])->format('Y-m-d')
+                    : now()->format('Y-m-d'),
+                'follow_up_type' => $validatedData['follow_up_type'] ?? null,
+                'comments' => $validatedData['comments'] ?? null,
+                'follow_up_user_id' => Auth::id(),
+            ]);
+        }
+
+        DB::commit();
+
+        
+
+        return redirect()
+            ->route($this->routePrefix . '.index')
+            ->with('success', 'Lead updated successfully');
+
+    } catch (\Exception $ex) {
+
+        DB::rollBack();
+
+        return back()->withInput()->with('fail', $ex->getMessage());
+    }
+}
+
+      public function updateMissed(Request $request)
     {
         $validate_data = $request->validate([
             'id' => 'required|exists:leads,id',
@@ -356,32 +413,34 @@ class LeadController extends BackendController
 
         try {
 
-        $lead->update([
-            'status' => $validate_data['status'],
-        ]);
-
-        if (!empty($validate_data['follow_up_date']) || !empty($validate_data['follow_up_type']) || !empty($validate_data['comments'])) {
-           Followup::create([
-                'lead_id' => $lead->id,
-                'follow_up_date' => $validate_data['follow_up_date'] ?? now(),
-                'follow_up_type' => $validate_data['follow_up_type'] ?? null,
-                'comments' => $validate_data['comments'] ?? null,
-                'follow_up_user_id' => Auth::id(),
+            $lead->update([
+                'status' => $validate_data['status'],
+                'follow_up_date' => $validate_data['follow_up_date'],
+                'follow_up_type' => $validate_data['follow_up_type'],
+                'comments' => $validate_data['comments'],
             ]);
-        }
+
+            if (!empty($validate_data['follow_up_date']) || !empty($validate_data['follow_up_type']) || !empty($validate_data['comments'])) {
+                Followup::create([
+                    'lead_id' => $lead->id,
+                    'follow_up_date' => $validate_data['follow_up_date'] ?? now(),
+                    'follow_up_type' => $validate_data['follow_up_type'] ?? null,
+                    'comments' => $validate_data['comments'] ?? null,
+                    'follow_up_user_id' => Auth::id(),
+                ]);
+            }
 
             // return redirect()->route($this->routePrefix . ".index")->with('success', 'Lead updated successfully');
             return redirect()->back()->with('success', 'Lead updated successfully!');
         } catch (\Exception $ex) {
-             Log::error("Error updating lead follow-up", [
-            'lead_id' => $request->id,
-            'user_id' => Auth::id(),
-            'error' => $ex->getMessage(),
-            'input' => $request->all(),
-        ]);
+            Log::error("Error updating lead follow-up", [
+                'lead_id' => $request->id,
+                'user_id' => Auth::id(),
+                'error' => $ex->getMessage(),
+                'input' => $request->all(),
+            ]);
             return back()->withInput()->with('fail', $ex->getMessage());
         }
-        
     }
 
     /**

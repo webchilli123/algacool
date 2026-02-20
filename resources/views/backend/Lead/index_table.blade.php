@@ -61,6 +61,17 @@
                     </td>
                     <td>
                         <x-Backend.index-table-info :record="$record" :userList="$userListCache" />
+
+                         <br><br>
+
+                        <strong>Assigned To:</strong>
+@if($record->assignedUser)
+    <span class="badge bg-primary">
+        {{ $record->assignedUser->name }}
+    </span>
+@else
+    <span class="badge bg-secondary">Unassigned</span>
+@endif
                     </td>
                     <td>
                         <x-Backend.summary-comman-actions :id="$record->id" :routePrefix="$routePrefix" />

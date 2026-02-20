@@ -72,6 +72,11 @@ class Lead extends BaseModel
         return $this->belongsTo(Party::class, "party_id");
     }
 
+    public function assignedUser()
+    {
+        return $this->belongsTo(User::class, "assigned_user_id");
+    }
+
     public function user()
     {
         return $this->belongsTo(User::class, "follow_up_user_id");
