@@ -48,7 +48,7 @@ class LeadController extends Controller
             $query = Lead::query();
 
             // ✅ Load relations (same as web)
-            $query->with(["leadItem", "party", "user", "followups" => function ($q) {
+            $query->with(["leadItem", "party", "user", "assignedUser", "followups" => function ($q) {
                 $q->orderBy('id', 'desc');
             }])->orderBy('id', 'desc');
 
