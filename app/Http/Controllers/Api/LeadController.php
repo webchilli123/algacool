@@ -90,6 +90,7 @@ class LeadController extends Controller
             'customer_address' => 'nullable|string',
             'status' => 'nullable|string',
             'lead_source_id' => 'required|integer|exists:sources,id',
+            'assigned_user_id' => 'required|integer|exists:users,id',
             'not_in_interested_reason' => 'nullable|string',
 
             'follow_up_date' => 'nullable|date',
@@ -278,6 +279,7 @@ class LeadController extends Controller
             'alternate_number' => 'nullable|numeric',
             'customer_website' => 'nullable|string',
             'customer_address' => 'nullable|string',
+            'assigned_user_id' => 'sometimes|integer|exists:users,id',
 
             'status' => 'nullable|string',
             'not_in_interested_reason' => 'nullable|string',
