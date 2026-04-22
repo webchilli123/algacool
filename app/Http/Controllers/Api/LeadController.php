@@ -216,6 +216,7 @@ class LeadController extends Controller
                 "leadItem",
                 "party",
                 "user",
+                "assignedUser",
                 "followups"
             ])->findOrFail($id);
 

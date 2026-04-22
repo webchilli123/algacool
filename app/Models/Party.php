@@ -25,17 +25,17 @@ class Party extends BaseModel
         ],
     ];
 
-    public function products()
-    {
-        return $this->belongsToMany(Product::class, 'party_products')
-            ->withTimestamps()
-            ->withPivot('deleted_at');
-    }
+    // public function products()
+    // {
+    //     return $this->belongsToMany(Product::class, 'party_products')
+    //         ->withTimestamps()
+    //         ->withPivot('deleted_at');
+    // }
 
-    public function finishedItems()
-    {
-        return $this->belongsToMany(Product::class, 'party_products');
-    }
+    // public function finishedItems()
+    // {
+    //     return $this->belongsToMany(Product::class, 'party_products');
+    // }
 
     public function city()
     {

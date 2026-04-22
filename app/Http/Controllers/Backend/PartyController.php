@@ -122,8 +122,8 @@ class PartyController extends BackendController
             "is_supplier" => "",
             "is_customer" => "",
             "is_active" => "nullable|in:0,1",
-            'finished_item_ids' => 'nullable|array',
-            'finished_item_ids.*' => 'exists:products,id',
+            // 'finished_item_ids' => 'nullable|array',
+            // 'finished_item_ids.*' => 'exists:products,id',
         ];
     }
 
@@ -156,16 +156,7 @@ class PartyController extends BackendController
         $validatedData = $request->validate($rules, $messages);
 
         try {
-            // $this->modelClass::create($validatedData);
-
-             $party = $this->modelClass::create(
-            collect($validatedData)->except('finished_item_ids')->toArray()
-        );
-
-        // 2️⃣ Save finished items (pivot)
-        if ($request->filled('finished_item_ids')) {
-            $party->finishedItems()->sync($request->finished_item_ids);
-        }
+            $this->modelClass::create($validatedData);
 
             return back()->with('success', 'Record created successfully');
         } catch (Exception $ex) {
@@ -183,16 +174,6 @@ class PartyController extends BackendController
         ];
 
         $state_list = State::getList("id", "name");
-
-        // $finishedItemList = Product::getList(
-        //     'id',
-        //     'display_name',
-        //     ['product_type' => 1]
-        // );
-
-        // $selectedFinishedItems = $model
-        //     ? $model->finishedItems->pluck('id')->toArray()
-        //     : [];
 
         $this->_set_common_form_list($model);
 
@@ -253,15 +234,7 @@ class PartyController extends BackendController
     try {
         $party = $this->modelClass::findOrFail($id);
 
-        $party->update(
-            collect($validatedData)->except('finished_item_ids')->toArray()
-        );
-
-        if ($request->has('finished_item_ids')) {
-            $party->finishedItems()->sync($request->finished_item_ids);
-        } else {
-            $party->finishedItems()->sync([]);
-        }
+        $party->update($validatedData);
 
         return redirect()
             ->route($this->routePrefix . '.index')
