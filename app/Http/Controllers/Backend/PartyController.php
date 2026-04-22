@@ -184,19 +184,19 @@ class PartyController extends BackendController
 
         $state_list = State::getList("id", "name");
 
-        $finishedItemList = Product::getList(
-            'id',
-            'display_name',
-            ['product_type' => 1]
-        );
+        // $finishedItemList = Product::getList(
+        //     'id',
+        //     'display_name',
+        //     ['product_type' => 1]
+        // );
 
-        $selectedFinishedItems = $model
-            ? $model->finishedItems->pluck('id')->toArray()
-            : [];
+        // $selectedFinishedItems = $model
+        //     ? $model->finishedItems->pluck('id')->toArray()
+        //     : [];
 
         $this->_set_common_form_list($model);
 
-        $this->setForView(compact("model", "form", "state_list","finishedItemList", "selectedFinishedItems"));
+        $this->setForView(compact("model", "form", "state_list"));
 
         return $this->view("form");
     }
