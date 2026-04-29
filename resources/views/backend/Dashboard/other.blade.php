@@ -112,7 +112,7 @@
             <i class="bi-arrow-repeat"></i>
         </button>
          <br><br>
-                            <a href="{{ route('leads.edit', $lead->id) }}" class="btn btn-info btn-sm">
+                            <a href="{{ route('lead.edit', $lead->id) }}" class="btn btn-info btn-sm">
                                 <i class="bi bi-pencil"></i>
                             </a>
                         </td>
@@ -169,7 +169,7 @@
             <i class="bi-arrow-repeat"></i>
         </button>
          <br><br>
-                            <a href="{{ route('leads.edit', $lead->id) }}" class="btn btn-info btn-sm">
+                            <a href="{{ route('lead.edit', $lead->id) }}" class="btn btn-info btn-sm">
                                 <i class="bi bi-pencil"></i>
                             </a>
                         </td>
@@ -232,7 +232,7 @@
             <i class="bi-arrow-repeat"></i>
         </button>
          <br><br>
-                            <a href="{{ route('leads.edit', $lead->id) }}" class="btn btn-info btn-sm">
+                            <a href="{{ route('lead.edit', $lead->id) }}" class="btn btn-info btn-sm">
                                 <i class="bi bi-pencil"></i>
                             </a>
                         </td>
@@ -246,7 +246,7 @@
     <div class="modal fade" id="updateModal" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
-                <form id="updateForm" action="{{ route('leads.updateMissed') }}" method="POST">
+                <form id="updateForm" action="{{ route('lead.updateMissed') }}" method="POST">
                     @csrf
                     @method('PUT')
                     <input type="hidden" name="id" id="lead_id">
