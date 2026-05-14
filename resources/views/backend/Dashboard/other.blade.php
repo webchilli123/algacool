@@ -75,7 +75,7 @@
                         <th>Customer Info</th>
                         <th>Level</th>
                         <th>Comments</th>
-                        <th>Follow Up Date/Satus</th>
+                        <th>Follow Up Date-Time</th>
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -101,7 +101,9 @@
                             <td>{{ $lead->level }}</td>
 
                             <td>{{ $lead->comments }}</td>
-                            <td>{{ if_date($lead->follow_up_date) }}</td>
+                            <td>{{ if_date($lead->follow_up_date) }}<br>
+                            {{ $lead->follow_up_time ? date('h:i A', strtotime($lead->follow_up_time)) : '' }}
+                            </td>
                              <td>
                        <button type="button" 
                 class="btn btn-sm btn-primary updateBtn"
@@ -133,7 +135,7 @@
                         <th>Customer Info</th>
                         <th>Level</th>
                         <th>Comments</th>
-                        <th>Follow Up Date/Satus</th>
+                        <th>Follow Up Date-Time</th>
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -159,7 +161,9 @@
                             <td>{{ $lead->level }}</td>
 
                             <td>{{ $lead->comments }}</td>
-                            <td>{{ if_date($lead->follow_up_date) }}</td>
+                            <td>{{ if_date($lead->follow_up_date) }}<br>
+                            {{ $lead->follow_up_time ? date('h:i A', strtotime($lead->follow_up_time)) : '' }}
+                            </td>
                              <td>
                        <button type="button" 
                 class="btn btn-sm btn-primary updateBtn"
@@ -194,7 +198,7 @@
                         <th>Customer Info</th>
                         <th>Level</th>
                         <th>Comments</th>
-                        <th>Follow Up Date/Satus</th>
+                        <th>Follow Up Date-Time</th>
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -221,7 +225,9 @@
 
                             <td>{{ $lead->comments }}</td>
                             <td>
-                                {{ if_date($lead->follow_up_date) }}
+                                {{ if_date($lead->follow_up_date) }}<br>
+{{ $lead->follow_up_time ? date('h:i A', strtotime($lead->follow_up_time)) : '' }}
+
                                 <span class="badge rounded-pill bg-danger text-white">Missed</span>
                             </td>
                             <td>
