@@ -446,11 +446,10 @@ class LeadController extends Controller
         $validated = $request->validate([
             'status' => 'required|string',
             'follow_up_date' => 'required|date',
-            'follow_up_time' => 'nullable|time',
+            'follow_up_time' => 'nullable|date_format:H:i',
             'follow_up_type' => 'required|string',
             'comments' => 'nullable|string',
         ]);
-
 
         // 🔥 Safe comparison
         $isSame =

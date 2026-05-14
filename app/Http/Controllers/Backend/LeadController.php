@@ -405,10 +405,18 @@ class LeadController extends BackendController
             'id' => 'required|exists:leads,id',
             'status' => 'required|string',
             'follow_up_date' => 'nullable|date',
-            'follow_up_time' => 'nullable|time',
+            'follow_up_time' => 'nullable',
             'follow_up_type' => 'nullable|string',
             'comments' => 'nullable|string',
         ]);
+
+          // Convert Time
+        $follow_up_time = !empty($validate_data['follow_up_time'])
+            ? Carbon::createFromFormat(
+                'h:i A',
+                $validate_data['follow_up_time']
+            )->format('H:i:s')
+            : now()->format('H:i:s');
 
         $lead = Lead::findOrFail($request->id);
 
@@ -416,8 +424,8 @@ class LeadController extends BackendController
 
             $lead->update([
                 'status' => $validate_data['status'],
-                'follow_up_date' => $validate_data['follow_up_date'],
-                'follow_up_time' => $validate_data['follow_up_time'],
+                'follow_up_date' => $validate_data['follow_up_date'] ?? now(),
+                'follow_up_time' => $follow_up_time,
                 'follow_up_type' => $validate_data['follow_up_type'],
                 'comments' => $validate_data['comments'],
             ]);
@@ -426,7 +434,7 @@ class LeadController extends BackendController
                 Followup::create([
                     'lead_id' => $lead->id,
                     'follow_up_date' => $validate_data['follow_up_date'] ?? now(),
-                    'follow_up_time' => $validate_data['follow_up_time'] ?? now()->format('H:i:s'),
+                    'follow_up_time' => $follow_up_time,
                     'follow_up_type' => $validate_data['follow_up_type'] ?? null,
                     'comments' => $validate_data['comments'] ?? null,
                     'follow_up_user_id' => Auth::id(),
