@@ -360,7 +360,7 @@
                         </div>
 
                         <div class="col-md-6 mb-3">
-                            <x-Inputs.text-field name="follow_up_time" id="lead_date"
+                            <x-Inputs.text-field name="follow_up_time" id="lead_time"
                                 class="form-control time-picker" label="Follow Up Time" :value="old('follow_up_time', $model->follow_up_time ?? '')" />
                         </div>
 
@@ -547,7 +547,9 @@
         $("#lead_id").val($(this).data("id"));
         $("#lead_status").val($(this).data("status"));
         $("#lead_date").val($(this).data("date"));
+        $("#lead_time").val($(this).data("time"));
         $("#lead_type").val($(this).data("type"));
+        $("#lead_comment").val($(this).data("comment"));
 
         // Call toggle function after setting values
         toggleStatusFields(false);
@@ -589,13 +591,14 @@
         toggleStatusFields(true);
     });
 
-    $(document).on("click", ".updateBtn", function() {
-        $("#lead_id").val($(this).data("id"));
-        $("#lead_status").val($(this).data("status"));
-        $("#lead_date").val($(this).data("date"));
-        $("#lead_type").val($(this).data("type"));
-        $("#lead_comment").val($(this).data("comment"));
+    // $(document).on("click", ".updateBtn", function() {
+    //     $("#lead_id").val($(this).data("id"));
+    //     $("#lead_status").val($(this).data("status"));
+    //     $("#lead_date").val($(this).data("date"));
+    //     $("#lead_time").val($(this).data("time"));
+    //     $("#lead_type").val($(this).data("type"));
+    //     $("#lead_comment").val($(this).data("comment"));
 
-        $("#updateModal").modal("show");
-    });
+    //     $("#updateModal").modal("show");
+    // });
 </script>

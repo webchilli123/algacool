@@ -270,12 +270,15 @@
                                     label="Follow Up Date" :value="old('follow_up_date', $model->follow_up_date ?? '')" :mandatory="true" />
                             </div>
                             <div class="col-md-6 mb-3">
-                                <x-Inputs.text-field name="follow_up_time" id="lead_date" class="form-control time-picker"
+                                <x-Inputs.text-field name="follow_up_time" id="lead_time" class="form-control time-picker"
                                     label="Follow Up Time" :value="old('follow_up_time', $model->follow_up_time ?? '')" :mandatory="true" />
                             </div>
                             <div class="col-md-12 mb-3">
                                 <x-Inputs.drop-down name="follow_up_type" id="lead_type" label="Follow Up Type"
                                     :list="$followtypeList" :value="old('follow_up_type', $model->follow_up_type ?? '')" class="form-control select2" :mandatory="true" />
+                            </div>
+                            <div class="col-md-12 mb-3">
+                                <x-Inputs.text-area id="lead_comment" name="comments" label="Comments" />
                             </div>
                         </div>
                     </div>
@@ -294,7 +297,9 @@
             $("#lead_id").val($(this).data("id"));
             $("#lead_status").val($(this).data("status"));
             $("#lead_date").val($(this).data("date"));
+            $("#lead_time").val($(this).data("time"));
             $("#lead_type").val($(this).data("type"));
+            $("#lead_comment").val($(this).data("comment"));
 
             $("#updateModal").modal("show");
         });

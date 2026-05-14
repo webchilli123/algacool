@@ -446,6 +446,7 @@ class LeadController extends Controller
         $validated = $request->validate([
             'status' => 'required|string',
             'follow_up_date' => 'required|date',
+            'follow_up_time' => 'nullable|time',
             'follow_up_type' => 'required|string',
             'comments' => 'nullable|string',
         ]);
@@ -468,6 +469,7 @@ class LeadController extends Controller
         $lead->update([
             'status' => $validated['status'],
             'follow_up_date' => $validated['follow_up_date'],
+            'follow_up_time' => $validated['follow_up_time'],
             'follow_up_type' => $validated['follow_up_type'],
             'comments' => $validated['comments'] ?? null,
         ]);
@@ -476,6 +478,7 @@ class LeadController extends Controller
         Followup::create([
             'lead_id' => $lead->id,
             'follow_up_date' => $validated['follow_up_date'],
+            'follow_up_time' => $validated['follow_up_time'],
             'follow_up_type' => $validated['follow_up_type'],
             'comments' => $validated['comments'] ?? null,
             'follow_up_user_id' => Auth::id(),
