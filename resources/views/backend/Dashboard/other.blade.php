@@ -108,6 +108,7 @@
                 data-id="{{ $lead->id }}"
                 data-status="{{ $lead->status }}"
                 data-date="{{ $lead->follow_up_date }}"
+                data-time="{{ $lead->follow_up_time }}"
                 data-type="{{ $lead->follow_up_type }}">
             <i class="bi-arrow-repeat"></i>
         </button>
@@ -165,6 +166,7 @@
                 data-id="{{ $lead->id }}"
                 data-status="{{ $lead->status }}"
                 data-date="{{ $lead->follow_up_date }}"
+                data-time="{{ $lead->follow_up_time }}"
                 data-type="{{ $lead->follow_up_type }}">
             <i class="bi-arrow-repeat"></i>
         </button>
@@ -228,6 +230,7 @@
                 data-id="{{ $lead->id }}"
                 data-status="{{ $lead->status }}"
                 data-date="{{ $lead->follow_up_date }}"
+                data-time="{{ $lead->follow_up_time }}"
                 data-type="{{ $lead->follow_up_type }}">
             <i class="bi-arrow-repeat"></i>
         </button>
@@ -262,9 +265,13 @@
                                 <x-Inputs.drop-down name="status" id="lead_status" label="Missing Follow Up Report"
                                     :list="$statusList" class="form-control select2" :value="old('status', $model->status ?? '')" :mandatory="true" />
                             </div>
-                            <div class="col-md-12 mb-3">
+                            <div class="col-md-6 mb-3">
                                 <x-Inputs.text-field name="follow_up_date" id="lead_date" class="form-control date-picker"
                                     label="Follow Up Date" :value="old('follow_up_date', $model->follow_up_date ?? '')" :mandatory="true" />
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <x-Inputs.text-field name="follow_up_time" id="lead_date" class="form-control time-picker"
+                                    label="Follow Up Time" :value="old('follow_up_time', $model->follow_up_time ?? '')" :mandatory="true" />
                             </div>
                             <div class="col-md-12 mb-3">
                                 <x-Inputs.drop-down name="follow_up_type" id="lead_type" label="Follow Up Type"
@@ -295,6 +302,11 @@
         flatpickr(".date-picker", {
             dateFormat: "Y-m-d",
             allowInput: true
+        });
+        $('.time-picker').flatpickr({
+            noCalendar: true,
+            enableTime: true,
+            dateFormat: 'h:i K'
         });
     </script>
 @endsection

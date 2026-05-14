@@ -129,7 +129,10 @@
                         <td>
                             <button type="button" class="btn btn-sm btn-primary updateBtn"
                                 data-id="{{ $lead->id }}" data-status="{{ $lead->status }}"
-                                data-date="{{ $lead->latestFollowUp?->follow_up_date }}" data-type="{{ $lead->latestFollowUp?->follow_up_type }}" data-comment="{{ $lead->latestFollowUp?->comments }}">
+                                data-date="{{ $lead->latestFollowUp?->follow_up_date }}"
+                                data-time="{{ $lead->latestFollowUp?->follow_up_time }}"
+                                data-type="{{ $lead->latestFollowUp?->follow_up_type }}"
+                                data-comment="{{ $lead->latestFollowUp?->comments }}">
                                 <i class="bi-arrow-repeat"></i>
                             </button>
                             <br><br>
@@ -182,7 +185,10 @@
                         <td>
                             <button type="button" class="btn btn-sm btn-primary updateBtn"
                                 data-id="{{ $lead->id }}" data-status="{{ $lead->status }}"
-                                data-date="{{ $lead->latestFollowUp?->follow_up_date }}" data-type="{{ $lead->latestFollowUp?->follow_up_type }}" data-comment="{{ $lead->latestFollowUp?->comments }}">
+                                data-date="{{ $lead->latestFollowUp?->follow_up_date }}"
+                                data-time="{{ $lead->latestFollowUp?->follow_up_time }}"
+                                data-type="{{ $lead->latestFollowUp?->follow_up_type }}"
+                                data-comment="{{ $lead->latestFollowUp?->comments }}">
                                 <i class="bi-arrow-repeat"></i>
                             </button>
                             <br><br>
@@ -242,7 +248,10 @@
                         <td>
                             <button type="button" class="btn btn-sm btn-primary updateBtn"
                                 data-id="{{ $lead->id }}" data-status="{{ $lead->status }}"
-                                data-date="{{ $lead->latestFollowUp?->follow_up_date }}" data-type="{{ $lead->latestFollowUp?->follow_up_type }}" data-comment="{{ $lead->latestFollowUp?->comments }}">
+                                data-date="{{ $lead->latestFollowUp?->follow_up_date }}"
+                                data-time="{{ $lead->latestFollowUp?->follow_up_time }}"
+                                data-type="{{ $lead->latestFollowUp?->follow_up_type }}"
+                                data-comment="{{ $lead->latestFollowUp?->comments }}">
                                 <i class="bi-arrow-repeat"></i>
                             </button>
                             <br><br>
@@ -344,9 +353,15 @@
                                 :list="$statusList" class="form-control select2" :value="old('status')" :mandatory="true" />
                         </div>
 
-                        <div class="col-md-12 mb-3">
-                            <x-Inputs.text-field name="follow_up_date" id="lead_date" class="form-control date-picker"
-                                label="Follow Up Date" :value="old('follow_up_date')" :mandatory="true" />
+                        <div class="col-md-6 mb-3">
+                            <x-Inputs.text-field name="follow_up_date" id="lead_date"
+                                class="form-control date-picker" label="Follow Up Date" :value="old('follow_up_date', $model->follow_up_date ?? '')"
+                                :mandatory="true" />
+                        </div>
+
+                        <div class="col-md-6 mb-3">
+                            <x-Inputs.text-field name="follow_up_time" id="lead_date"
+                                class="form-control time-picker" label="Follow Up Time" :value="old('follow_up_time', $model->follow_up_time ?? '')" />
                         </div>
 
                         <div class="col-md-12 mb-3">
@@ -521,6 +536,12 @@
         allowInput: true
     });
 
+    $('.time-picker').flatpickr({
+        noCalendar: true,
+        enableTime: true,
+        dateFormat: 'h:i K'
+    });
+
     $(document).on("click", ".updateBtn", function() {
         // Set values from button data
         $("#lead_id").val($(this).data("id"));
@@ -568,7 +589,7 @@
         toggleStatusFields(true);
     });
 
-     $(document).on("click", ".updateBtn", function() {
+    $(document).on("click", ".updateBtn", function() {
         $("#lead_id").val($(this).data("id"));
         $("#lead_status").val($(this).data("status"));
         $("#lead_date").val($(this).data("date"));

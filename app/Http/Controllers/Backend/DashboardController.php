@@ -58,12 +58,12 @@ class DashboardController extends BackendController
         $today = Carbon::today();
         $next7 = Carbon::today()->addDays(7);
 
-        $todayLeads = Lead::where('follow_up_user_id', $auth_user['id'])
+        $todayLeads = Lead::where('assigned_user_id', $auth_user['id'])
             ->whereDate('follow_up_date', $today)
             ->where('status', '!=', 'not_interested')
             ->orderBy('follow_up_date', 'desc')->get();
 
-        $missingLeads = Lead::where('follow_up_user_id', $auth_user['id'])
+        $missingLeads = Lead::where('assigned_user_id', $auth_user['id'])
             ->whereNotNull('follow_up_date')
             ->whereDate('follow_up_date', '<', $today)
             ->where('status', '!=', 'not_interested')
@@ -71,7 +71,7 @@ class DashboardController extends BackendController
             ->limit(10)
             ->get();
 
-        $nextDaysLeads = Lead::where('follow_up_user_id', $auth_user['id'])
+        $nextDaysLeads = Lead::where('assigned_user_id', $auth_user['id'])
             ->whereNotNull('follow_up_date')
             ->whereBetween('follow_up_date', [$today, $next7])
             ->where('status', '!=', 'not_interested')

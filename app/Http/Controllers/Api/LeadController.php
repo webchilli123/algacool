@@ -54,7 +54,7 @@ class LeadController extends Controller
 
             // Add role/user restriction safely
             if (!auth()->user()->roles->contains('name', 'System Admin')) {
-                $query->where('follow_up_user_id', auth()->id());
+                $query->where('assigned_user_id', auth()->id());
             }
 
             $leads = $query->orderBy('id', 'desc')->paginate(10);
