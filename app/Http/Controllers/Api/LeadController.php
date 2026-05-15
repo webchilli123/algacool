@@ -10,6 +10,7 @@ use App\Models\User;
 use App\Models\LeadItem;
 use App\Models\Party;
 use App\Models\Source;
+use App\Services\PushNotificationService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
@@ -184,6 +185,23 @@ class LeadController extends Controller
                     'follow_up_user_id' => $data['follow_up_user_id'],
                 ]);
             }
+
+        $pushService = new PushNotificationService();
+        $users = User::all();
+
+        foreach ($users as $user) {
+
+            if ($user->isAdmin()) {
+
+                if (!empty($user->fcm_token)) {
+                    $pushService->send(
+                        $user->fcm_token,
+                        'New Lead 🔥',
+                        'New Lead Created Successfully'
+                    );
+                }
+            }
+        }
 
             DB::commit();
 
