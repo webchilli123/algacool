@@ -17,6 +17,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\Auth;
 use App\Imports\LeadsImport;
 use App\Models\Followup;
+use App\Services\PushNotificationService;
 use Carbon\Carbon;
 use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Support\Facades\Log;
@@ -230,6 +231,23 @@ class LeadController extends BackendController
                     'comments' => $validatedData['comments'] ?? null,
                     'follow_up_user_id' => Auth::id(),
                 ]);
+            }
+
+            $pushService = new PushNotificationService();
+            $users = User::all();
+
+            foreach ($users as $user) {
+                
+                if ($user->isAdmin()) {
+
+                    if (!empty($user->fcm_token)) {
+                        $pushService->send(
+                            $user->fcm_token,
+                            'New Lead 🔥',
+                            'New Lead Created Successfully'
+                        );
+                    }
+                }
             }
 
             DB::commit();
